@@ -1,5 +1,11 @@
 {% extends "courses/course_dashboard.html" %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    <li>/</li>
+    <li><a href="{% url 'courses_show_announcement' course.slug announcement.pk %}">
+        {{ announcement }}</a></li>
+{% endblock %}
 
 {% block dashboard_content %}
     <div class="well">
