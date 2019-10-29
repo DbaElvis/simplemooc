@@ -43,6 +43,10 @@ class Course(models.Model):
     def get_absolute_url(self):
         return reverse('details', args=[str(self.slug)])
 
+    def release_lessons(self):
+        today = timezone.now().date()
+        return self.lessons.filter(release_date__gte=today)
+
 
     class Meta:
         verbose_name = 'Curso'
@@ -80,7 +84,6 @@ class Material(models.Model):
     name = models.CharField('Nome', max_length=100)
     embedded = models.TextField('Vídeo embedded', blank=True)
     file = models.FileField(upload_to='lessons/materials', blank=True, null=True)
-
     lesson = models.ForeignKey(Lesson, verbose_name='Aula', related_name='materials', on_delete=models.CASCADE)
 
     def is_embedded(self):
@@ -90,7 +93,7 @@ class Material(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Matérial'
+        verbose_name = 'Material'
         verbose_name_plural = 'Materiais'
 
 class Enrollment(models.Model):
@@ -118,6 +121,9 @@ class Enrollment(models.Model):
     def active(self):
         self.status = 1
         self.save()
+
+    def is_approved(self):
+        return self.status == 1
 
     class Meta:
         verbose_name = 'Inscrição'
