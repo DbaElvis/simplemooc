@@ -21,11 +21,13 @@ from django.contrib import admin
 from core import urls as core_urls
 from courses import urls as courses_urls
 from accounts import urls as accounts_urls
+from forum import urls as forum_urls
 
 urlpatterns = [
     path('', include(core_urls), name='core'),
     path('conta/', include(accounts_urls),  name='accounts'),
 	path('cursos/', include(courses_urls),  name='courses'),
+    path('forum/', include(forum_urls),  name='forum'),
     path('admin/', admin.site.urls),
 ]
 

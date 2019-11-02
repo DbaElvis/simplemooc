@@ -41,7 +41,7 @@ class Course(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('details', args=[str(self.slug)])
+        return reverse('courses_details', args=[str(self.slug)])
 
     def release_lessons(self):
         today = timezone.now().date()
