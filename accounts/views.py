@@ -18,6 +18,7 @@ def dashboard(request):
     context = {}
     return render(request, template_name, context)
 
+
 def register(request):
     template_name = 'accounts/register.html'
     if request.method == 'POST':
@@ -48,6 +49,7 @@ def password_reset(request):
         context['success'] = True
     context['form'] = form
     return render(request, template_name, context)
+
 
 def password_reset_confirm(request, key):
     template_name = 'accounts/password_reset_confirm.html'
