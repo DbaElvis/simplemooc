@@ -52,8 +52,8 @@
                 </h3>
                 {{ enrollment.course.description|linebreaks }}
                 <div class="pure-controls">
-                    <a href="{% url 'courses_announcements' enrollment.course.slug %}" class="pure-button pure-button-primary">Acessar</a>
-                    <a href="{% url 'courses_undo_enrollment' enrollment.course.slug %}" class="pure-button button-error">Cancelar</a>
+                    <a href="#" class="pure-button pure-button-primary">Acessar</a>
+                    <a href="#" class="pure-button button-error">Cancelar</a>
                 </div>
             </div>
             {% empty %}
@@ -66,3 +66,16 @@
     </div>
 </div>
 {% endblock %}
+
+
+
+ <div class="pure-u-1-3">
+        <div class="inner">
+            {% block dashboard_content %}
+            <p><strong>Usuário</strong>: {{ user }}</p>
+            <p><strong>E-mail</strong>: {{ user.email }}</p>
+            {% endblock %}
+        </div>
+    </div>
+
+
